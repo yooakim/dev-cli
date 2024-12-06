@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     gnupg \
-    && rm -rf /var/lib/apt/lists/*
+    > /dev/null 2>&1 && rm -rf /var/lib/apt/lists/*
 
 # Install Node.js
 RUN curl -fsSL https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.gz | tar xzf - -C /usr/local --strip-components=1
@@ -22,14 +22,14 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 RUN wget -q https://packages.microsoft.com/config/ubuntu/22.04/packages-microsoft-prod.deb \
     && dpkg -i packages-microsoft-prod.deb \
     && apt-get update \
-    && apt-get install -y azure-functions-core-tools-4
+    && apt-get install -y azure-functions-core-tools-4 > /dev/null 2>&1
 
 # Install GitHub CLI
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
     && chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
     && apt-get update \
-    && apt-get install -y gh
+    && apt-get install -y gh > /dev/null 2>&1
 
     # After other apt-get installations, add:
 # Install tools and Starship
@@ -38,7 +38,7 @@ RUN apt-get update && apt-get install -y \
     wget \
     gnupg \
     dotnet-sdk-8.0 \
-    && rm -rf /var/lib/apt/lists/* \
+    > /dev/null 2>&1 && rm -rf /var/lib/apt/lists/* \
     && wget -qO- https://starship.rs/install.sh | sh -s -- --yes
 
 # Update dotnet workloads while still root
