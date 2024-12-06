@@ -1,0 +1,46 @@
+﻿# Default behavior: convert line endings to LF on checkout
+* text=auto
+
+# Source code
+*.cs text diff=csharp
+*.cshtml text diff=html
+*.csx text diff=csharp
+*.sln text eol=crlf
+*.csproj text eol=crlf
+
+# Scripts
+*.sh text eol=lf
+*.bash text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Web
+*.htm text diff=html
+*.html text diff=html
+*.css text diff=css
+*.js text
+*.ts text
+*.json text
+*.xml text
+*.yaml text
+*.yml text
+
+# Docker
+Dockerfile text
+*.dockerfile text
+.dockerignore text
+
+# Documentation
+*.md text diff=markdown
+*.txt text
+*.pdf binary
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.zip binary
+*.7z binary
+*.ttf binary
