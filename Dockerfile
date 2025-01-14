@@ -2,7 +2,7 @@
 
 FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_VERSION}
 
-ARG NODE_VERSION=20.11.0
+ARG NODE_VERSION=22.13.0
 
 # Install Node.js dependencies
 RUN apt-get update && apt-get install -y \
@@ -37,7 +37,6 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     gnupg \
-    dotnet-sdk-8.0 \
     > /dev/null 2>&1 && rm -rf /var/lib/apt/lists/* \
     && wget -qO- https://starship.rs/install.sh | sh -s -- --yes
 
